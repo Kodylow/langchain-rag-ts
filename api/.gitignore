@@ -4,3 +4,4 @@ dist
 .env.development.local
 pdfs/**
 src/generated/**
+.env
