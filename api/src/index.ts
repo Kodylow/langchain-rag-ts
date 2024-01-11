@@ -78,7 +78,7 @@ interface MainParams {
     pagesToDelete?: number[];
 }
 
-async function main({
+export async function takeNotes({
     pdfUrl,
     name,
     pagesToDelete,
@@ -91,9 +91,12 @@ async function main({
     if (pagesToDelete && pagesToDelete.length > 0) {
         pdfAsBuffer = await deletePages(pdfAsBuffer, pagesToDelete);
     }
+    console.log('loaded pdf');
 
     const documents = await convertPdfToDocuments(pdfAsBuffer);
+    console.log('converted pdf to documents');
     const notes = await generateNotes(documents);
+    console.log('generated notes');
     const database = await SupabaseDatabase.fromDocuments(documents);
     await Promise.all([
         database.addPaper({
@@ -107,8 +110,3 @@ async function main({
     console.log('saved notes to database');
     return notes;
 }
-
-const res = await main({
-    pdfUrl: 'https://arxiv.org/pdf/2305.15334.pdf',
-    name: 'gorilla: large language model connected with massive apis',
-})
