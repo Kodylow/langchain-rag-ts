@@ -6,13 +6,14 @@ function main() {
     const port = process.env.PORT || 8000;
 
     app.use(express.json());
-    
+
     app.get('/', (_req, res) => {
         // health check
         res.send('Hello!');
     });
 
     app.post('/take_notes', async (req, res) => {
+        console.log('Received request to take notes');
         const { pdfUrl, name, pagesToDelete } = req.body;
         const notes = await takeNotes({ pdfUrl, name, pagesToDelete });
         res.status(200).send(notes);
