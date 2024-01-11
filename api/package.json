@@ -16,11 +16,12 @@
     "precommit": "lint-staged",
     "format": "prettier --write \"**/*.ts\"",
     "format:check": "prettier --check \"**/*.ts\"",
-    "gen:supabase:types": "touch ./src/generated/db.ts && supabase gen types typescript --schema public > ./src/generated/db.ts --project-id <YOUR_PROJECT_ID>"
+    "gen:supabase:types": "mkdir -p ./src/generated && touch ./src/generated/db.ts && supabase gen types typescript --schema public > ./src/generated/db.ts --project-id lppxzycapwldilmidopj"
   },
   "author": "LangChain",
   "license": "MIT",
   "dependencies": {
+    "@langchain/community": "^0.0.16",
     "@langchain/openai": "^0.0.10",
     "@supabase/supabase-js": "^2.38.4",
     "axios": "^1.6.5",
@@ -29,6 +30,7 @@
     "langchain": "^0.1.2",
     "pdf-lib": "^1.17.1",
     "pdf-parse": "^1.1.1",
+    "supabase": "^1.131.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -37,7 +39,6 @@
     "@types/pdf-parse": "^1.1.4",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
-    "dotenv": "^16.0.3",
     "eslint": "^8.33.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.6.0",
@@ -45,7 +46,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-unused-imports": "^3.0.0",
     "prettier": "^2.8.3",
-    "supabase": ">=1.8.1",
+    "supabase": "^1.131.3",
     "tsx": "^3.12.3",
     "typescript": "^5.0.0"
   }
